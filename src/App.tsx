@@ -1,21 +1,18 @@
-import React from "react";
-import "./App.css";
-import Counter from "./features/counter/Counter";
+import React from 'react';
+import { Switch } from 'react-router';
+import './App.css';
+import Counter from './features/counter/Counter';
+import AdminLayout from './Layout/AdminLayout';
 
 function App() {
   return (
-    <div>
-      <h3>Hello world</h3>
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+    <Switch>
+      <AdminLayout path="/admin" exact>
         <Counter />
-      </div>
-    </div>
+      </AdminLayout>
+      <h3>Hello world</h3>
+      {/* <Counter /> */}
+    </Switch>
   );
 }
 
