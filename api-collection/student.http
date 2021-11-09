@@ -3,7 +3,7 @@
 # Cities
 
 # @name getAllStudents
-GET {{baseUrl}}/students?_page=1&_limit-10
+GET {{baseUrl}}/students?_page=1&_limit=10&_sort=mark&_order=desc
 
 ###
 
