@@ -4,7 +4,7 @@ import cityApi from './api/cityApi';
 import './App.css';
 import LoginPage from './features/auth/pages/LoginPage';
 import AdminLayout from './components/layout/Admin';
-import { NotFound } from './components/common';
+import { NotFound, PrivateRoute } from './components/common';
 
 function App() {
   useEffect(() => {
@@ -20,9 +20,9 @@ function App() {
           <LoginPage />
         </Route>
 
-        <Route path="/admin">
+        <PrivateRoute path="/admin">
           <AdminLayout />
-        </Route>
+        </PrivateRoute>
 
         <Route>
           <NotFound />
