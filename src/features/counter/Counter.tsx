@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hook";
-import { decrement, increment, selectCount } from "./counterSlice";
+import React, { Fragment } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hook';
+import { decrement, increment, selectCount } from './counterSlice';
 
 const Counter = () => {
   const count = useAppSelector(selectCount);
