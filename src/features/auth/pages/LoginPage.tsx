@@ -1,7 +1,7 @@
 import { Box, Button, CircularProgress, Typography } from '@material-ui/core';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hook';
-import { authActions, selectIsLogging } from '../authSlice';
+import { authActions } from '../authSlice';
 import { Header, LoginArea, Wrapper } from './LoginPage.styles';
 
 export interface LoginProps {}
