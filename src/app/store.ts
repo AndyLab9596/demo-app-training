@@ -3,14 +3,21 @@ import counterReducer from "../features/counter/counterSlice";
 import createSagaMiddleware from '@redux-saga/core';
 import rootSaga from './rootSaga';
 import authReducer from '../features/auth/authSlice';
+import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
+import { history } from '../utils';
+
+
+const rootReducer = combineReducers({
+    router: connectRouter(history),
+    counter: counterReducer,
+    auth: authReducer,
+})
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-    reducer: {
-        counter: counterReducer,
-        auth: authReducer,
-    },
+    reducer: rootReducer,
     // if devTools is false then devTools will not be connected
     // devTools: false,
     middleware: (getDefaultMiddleware) =>
