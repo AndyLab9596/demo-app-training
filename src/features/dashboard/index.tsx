@@ -1,5 +1,8 @@
+import { Box, Grid } from '@material-ui/core';
+import { PeopleAlt } from '@material-ui/icons';
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
+import StatisticItem from './components/StatisticItem';
 import {
   dashboardActions,
   selectDashboardLoading,
@@ -20,7 +23,41 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(dashboardActions.fetchData());
   }, [dispatch]);
-  return <div>Dashboard</div>;
+  return (
+    <Box p={3}>
+      {/* Statistic section */}
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={6} lg={3}>
+          <StatisticItem
+            icon={<PeopleAlt fontSize="large" color="primary" />}
+            label="male"
+            value={statistics.maleCount}
+          />
+        </Grid>
+        <Grid item xs={12} md={6} lg={3}>
+          <StatisticItem
+            icon={<PeopleAlt fontSize="large" color="primary" />}
+            label="male"
+            value={statistics.femaleCount}
+          />
+        </Grid>
+        <Grid item xs={12} md={6} lg={3}>
+          <StatisticItem
+            icon={<PeopleAlt fontSize="large" color="primary" />}
+            label="male"
+            value={statistics.highMarkCount}
+          />
+        </Grid>
+        <Grid item xs={12} md={6} lg={3}>
+          <StatisticItem
+            icon={<PeopleAlt fontSize="large" color="primary" />}
+            label="male"
+            value={statistics.lowMarkCount}
+          />
+        </Grid>
+      </Grid>
+    </Box>
+  );
 };
 
 export default Dashboard;
