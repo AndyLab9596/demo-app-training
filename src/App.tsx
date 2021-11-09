@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router';
 import cityApi from './api/cityApi';
 import './App.css';
+import LoginPage from './features/auth/pages/LoginPage';
+import AdminLayout from './components/layout/Admin';
+import { NotFound } from './components/common';
 
 function App() {
   useEffect(() => {
@@ -13,11 +16,17 @@ function App() {
   return (
     <div>
       <Switch>
-        <Route path="/login"></Route>
+        <Route path="/login">
+          <LoginPage />
+        </Route>
 
-        <Route path="admin"></Route>
+        <Route path="/admin">
+          <AdminLayout />
+        </Route>
 
-        <Route>{/* Not found */}</Route>
+        <Route>
+          <NotFound />
+        </Route>
       </Switch>
     </div>
   );
