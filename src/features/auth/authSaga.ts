@@ -7,12 +7,12 @@ export function* handleLogin(payload: LoginPayload) {
     try {
         yield delay(100)
         localStorage.setItem('access_token', 'sth');
-        console.log('payload', payload)
         yield put(authActions.loginSuccess({
             id: 1,
             name: 'andy'
         }))
     } catch (error) {
+        // put: dispatch action from saga
         yield put(authActions.loginFailed('error'))
     }
 }
