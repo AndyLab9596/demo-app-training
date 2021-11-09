@@ -1,4 +1,4 @@
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid, LinearProgress } from '@material-ui/core';
 import { PeopleAlt } from '@material-ui/icons';
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
@@ -25,6 +25,9 @@ const Dashboard = () => {
   }, [dispatch]);
   return (
     <Box p={3}>
+      {/* loading */}
+      {loading && <LinearProgress />}
+
       {/* Statistic section */}
       <Grid container spacing={2}>
         <Grid item xs={12} md={6} lg={3}>
