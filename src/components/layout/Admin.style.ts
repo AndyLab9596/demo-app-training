@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const Wrapper = styled.div`
     display: flex;
@@ -33,6 +34,14 @@ export const Title = styled.h3`
 export const WrapperSidebar = styled.div`
     width: 100%;
     max-width: 200px;
-    
+`
 
+export const StyledLink = styled(NavLink)`
+    text-decoration: none;
+    color: #000;
+    /* &.active > div {
+        color: red,
+
+    }  */
+    
 `

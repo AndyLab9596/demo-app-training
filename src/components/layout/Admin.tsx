@@ -15,7 +15,7 @@ import { useAppDispatch } from '../../app/hook';
 import { authActions } from '../../features/auth/authSlice';
 import Dashboard from '../../features/dashboard';
 import StudentFeature from '../../features/student';
-import { Header, Main, Sidebar, Title, Wrapper, WrapperSidebar } from './Admin.style';
+import { Header, Main, Sidebar, StyledLink, Title, Wrapper, WrapperSidebar } from './Admin.style';
 
 export interface AdminLayoutProps {}
 
@@ -41,18 +41,23 @@ export const AdminLayout = (props: AdminLayoutProps) => {
         <Sidebar>
           <WrapperSidebar>
             <List component="nav" aria-label="main mailbox folders">
-              <ListItem button>
-                <ListItemIcon>
-                  <DashboardIcon />
-                </ListItemIcon>
-                <ListItemText primary="Dashboard" />
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <EmojiPeopleIcon />
-                </ListItemIcon>
-                <ListItemText primary="Student" />
-              </ListItem>
+              <StyledLink to="/admin/dashboard">
+                <ListItem button>
+                  <ListItemIcon>
+                    <DashboardIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Dashboard" />
+                </ListItem>
+              </StyledLink>
+
+              <StyledLink to="/admin/student">
+                <ListItem button>
+                  <ListItemIcon>
+                    <EmojiPeopleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Student" />
+                </ListItem>
+              </StyledLink>
             </List>
           </WrapperSidebar>
         </Sidebar>

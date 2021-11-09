@@ -13,7 +13,7 @@ export function* handleLogin(payload: LoginPayload) {
             name: 'andy'
         }))
         // redirect to admin page
-        yield put(push('/admin'))
+        yield put(push('/admin/dashboard'))
     } catch (error) {
         // put: dispatch action from saga
         yield put(authActions.loginFailed('error'))
