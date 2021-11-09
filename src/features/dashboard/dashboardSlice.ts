@@ -58,7 +58,7 @@ const dashboardSlice = createSlice({
         setLowestStudentList(state, action: PayloadAction<Student[]>) {
             state.lowestStudentList = action.payload;
         },
-        setRanking(state, action: PayloadAction<RankingByCity[]>) {
+        setRankingByCityList(state, action: PayloadAction<RankingByCity[]>) {
             state.rankingByCityList = action.payload;
         },
     }
