@@ -1,5 +1,6 @@
 import { delay, fork, take, put, call } from "@redux-saga/core/effects"
 import { PayloadAction } from "@reduxjs/toolkit";
+import { push } from "connected-react-router";
 import { authActions, LoginPayload } from "./authSlice";
 
 
@@ -11,15 +12,20 @@ export function* handleLogin(payload: LoginPayload) {
             id: 1,
             name: 'andy'
         }))
+        // redirect to admin page
+        yield put(push('/admin'))
     } catch (error) {
         // put: dispatch action from saga
         yield put(authActions.loginFailed('error'))
     }
+
 }
 
 export function* handleLogout() {
     yield delay(100);
     localStorage.removeItem('access_token')
+    yield put(push('/login'))
+
 }
 
 export function* watchLoginFlow() {

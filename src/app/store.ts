@@ -4,7 +4,7 @@ import createSagaMiddleware from '@redux-saga/core';
 import rootSaga from './rootSaga';
 import authReducer from '../features/auth/authSlice';
 import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { history } from '../utils';
 
 
@@ -21,7 +21,7 @@ export const store = configureStore({
     // if devTools is false then devTools will not be connected
     // devTools: false,
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(sagaMiddleware),
+        getDefaultMiddleware().concat(sagaMiddleware, routerMiddleware(history)),
 })
 
 sagaMiddleware.run(rootSaga)
