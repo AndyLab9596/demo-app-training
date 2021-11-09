@@ -10,9 +10,13 @@ import {
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import React, { Fragment } from 'react';
+import { Route, Switch } from 'react-router';
 import { useAppDispatch } from '../../app/hook';
 import { authActions } from '../../features/auth/authSlice';
+import Dashboard from '../../features/dashboard';
+import StudentFeature from '../../features/student';
 import { Header, Main, Sidebar, Title, Wrapper, WrapperSidebar } from './Admin.style';
+
 export interface AdminLayoutProps {}
 
 export const AdminLayout = (props: AdminLayoutProps) => {
@@ -52,7 +56,16 @@ export const AdminLayout = (props: AdminLayoutProps) => {
             </List>
           </WrapperSidebar>
         </Sidebar>
-        <Main></Main>
+        <Main>
+          <Switch>
+            <Route path="/admin/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/admin/student">
+              <StudentFeature />
+            </Route>
+          </Switch>
+        </Main>
       </Wrapper>
     </Fragment>
   );
