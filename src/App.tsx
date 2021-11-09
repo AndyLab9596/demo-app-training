@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
+import { Route, Switch } from 'react-router';
 import cityApi from './api/cityApi';
 import './App.css';
-import Counter from './features/counter/Counter';
 
 function App() {
   useEffect(() => {
@@ -12,7 +12,13 @@ function App() {
 
   return (
     <div>
-      <Counter />
+      <Switch>
+        <Route path="/login"></Route>
+
+        <Route path="admin"></Route>
+
+        <Route>{/* Not found */}</Route>
+      </Switch>
     </div>
   );
 }
