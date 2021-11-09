@@ -25,3 +25,6 @@ LOGIN
 LOGOUT
 - clear token from local storage
 - redirect to login page
+
+authSlice -> define reducers
+authSaga -> define effects
