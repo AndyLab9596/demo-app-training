@@ -1,10 +1,11 @@
-import React from 'react';
-import { Student } from '../../../models';
-import { useForm } from 'react-hook-form';
-import { Box, Button, Grid, CircularProgress } from '@material-ui/core';
-import { InputField, RadioGroupField } from '../../../components/FormFields';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Box, Button, CircularProgress, Grid } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { InputField, RadioGroupField } from '../../../components/FormFields';
+import { Student } from '../../../models';
 
 export interface StudentFormProps {
   initialValues?: Student;
@@ -20,6 +21,7 @@ const schema = yup.object().shape({
 });
 
 const StudentForm = ({ initialValues, onSubmit }: StudentFormProps) => {
+  const [error, setError] = useState<string>('');
   const {
     control,
     handleSubmit,
@@ -33,9 +35,11 @@ const StudentForm = ({ initialValues, onSubmit }: StudentFormProps) => {
     console.log('formValues', formValues);
 
     try {
+      setError('');
       await onSubmit?.(formValues);
     } catch (error) {
       console.log(error);
+      // setError(error);
     }
   };
 
@@ -70,6 +74,8 @@ const StudentForm = ({ initialValues, onSubmit }: StudentFormProps) => {
             />
           </Grid>
         </Grid>
+
+        {error && <Alert severity="error">{error}</Alert>}
 
         <Box mt={3}>
           <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
