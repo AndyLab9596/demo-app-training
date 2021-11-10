@@ -10,7 +10,6 @@ function* fetchStudentList(action: PayloadAction<ListParams>) {
         const response: ListResponse<Student> = yield call(studentApi.getAllStudents, action.payload)
         yield put(studentActions.fetStudentListSuccess(response))
     } catch (error) {
-        console.log('failed to fetch student list')
         yield put(studentActions.fetchStudentListFailed('error'))
     }
 }
