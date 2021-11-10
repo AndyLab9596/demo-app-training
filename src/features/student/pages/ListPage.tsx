@@ -1,6 +1,12 @@
 import { Box, Button, Typography } from '@material-ui/core';
+import Pagination from '@material-ui/lab/Pagination';
 import React, { useEffect } from 'react';
+import { useHistory, useRouteMatch } from 'react-router';
+import { Link } from 'react-router-dom';
+import studentApi from '../../../api/studentApi';
 import { useAppDispatch, useAppSelector } from '../../../app/hook';
+import { ListParams, Student } from '../../../models';
+import StudentSearch from '../components/StudentSearch';
 import StudentTable from '../components/StudentTable';
 import {
   selectStudentFilter,
@@ -8,13 +14,6 @@ import {
   selectStudentPagination,
   studentActions,
 } from '../studentSlice';
-import Pagination from '@material-ui/lab/Pagination';
-import StudentSearch from '../components/StudentSearch';
-import { ListParams, Student } from '../../../models';
-import studentApi from '../../../api/studentApi';
-import { Link } from 'react-router-dom';
-import { useHistory, useRouteMatch } from 'react-router';
-import { History } from 'history';
 
 const ListPage = () => {
   const match = useRouteMatch();
