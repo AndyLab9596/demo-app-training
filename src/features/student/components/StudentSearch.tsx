@@ -1,5 +1,5 @@
 import { Box, FormControl, InputAdornment, InputLabel, OutlinedInput } from '@material-ui/core';
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { ListParams } from '../../../models';
 
 export interface StudentSearchProps {
@@ -8,19 +8,22 @@ export interface StudentSearchProps {
   onSearchChange?: (newFilter: ListParams) => void;
 }
 
-const StudentSearch = (props: StudentSearchProps) => {
-  //   const handleChange = (prop) => (event) => {
-  //     setValues({ ...values, [prop]: event.target.value });
-  //   };
+const StudentSearch = ({ filter, onChange, onSearchChange }: StudentSearchProps) => {
+  const handleDebounceSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!onSearchChange) return;
+
+    onSearchChange({
+      ...filter,
+      name_like: e.target.value,
+    });
+  };
 
   return (
     <Box mt={2}>
       <FormControl fullWidth variant="outlined">
-        {/* <InputLabel htmlFor="search-by-name">Search</InputLabel> */}
         <OutlinedInput
           id="search-by-name"
-          //   value={values.amount}
-          //   onChange={handleChange('amount')}
+          onChange={handleDebounceSearch}
           startAdornment={<InputAdornment position="start">Search</InputAdornment>}
         />
       </FormControl>
