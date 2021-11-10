@@ -43,6 +43,10 @@ const studentSlice = createSlice({
         setFilter(state, action: PayloadAction<ListParams>) {
             state.filter = action.payload
         },
+
+        searchDebounce(state, action: PayloadAction<ListParams>) {
+
+        },
     }
 })
 

@@ -10,6 +10,7 @@ import {
 } from '../studentSlice';
 import Pagination from '@material-ui/lab/Pagination';
 import StudentSearch from '../components/StudentSearch';
+import { ListParams } from '../../../models';
 
 const ListPage = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +27,11 @@ const ListPage = () => {
     dispatch(studentActions.setFilter({ ...filter, _page: page }));
   };
 
+  const handleSearchChange = (newFilter: ListParams) => {
+    console.log('search change', newFilter);
+    dispatch(studentActions.searchDebounce(newFilter));
+  };
+
   return (
     <Box p={3}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -36,7 +42,7 @@ const ListPage = () => {
       </Box>
 
       <Box mb={3}>
-        <StudentSearch filter={filter} />
+        <StudentSearch filter={filter} onSearchChange={handleSearchChange} />
       </Box>
 
       {/* Student table */}
