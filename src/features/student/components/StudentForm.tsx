@@ -2,7 +2,7 @@ import React from 'react';
 import { Student } from '../../../models';
 import { useForm } from 'react-hook-form';
 import { Box, Button, Grid } from '@material-ui/core';
-import { InputField } from '../../../components/FormFields';
+import { InputField, RadioGroupField } from '../../../components/FormFields';
 export interface StudentFormProps {
   initialValues?: Student;
   onSubmit?: (formValues: Student) => void;
@@ -27,19 +27,27 @@ const StudentForm = ({ initialValues, onSubmit }: StudentFormProps) => {
           </Grid>
 
           <Grid item xs={6}>
-            <InputField name="age" control={control} label="Age" />
+            <InputField name="age" control={control} label="Age" type="number" />
           </Grid>
 
           <Grid item xs={6}>
-            <InputField name="mark" control={control} label="Mark" />
-          </Grid>
-
-          <Grid item xs={6}>
-            <InputField name="gender" control={control} label="Gender" />
+            <InputField name="mark" control={control} label="Mark" type="number" />
           </Grid>
 
           <Grid item xs={6}>
             <InputField name="city" control={control} label="City" />
+          </Grid>
+          <Grid item xs={6}>
+            {/* <RadioGroupField name="gender" control={control} label="Gender" /> */}
+            <RadioGroupField
+              name="gender"
+              control={control}
+              label="Gender"
+              options={[
+                { label: 'Male', value: 'male' },
+                { label: 'Female', value: 'female' },
+              ]}
+            />
           </Grid>
         </Grid>
 
