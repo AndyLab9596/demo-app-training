@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Student } from '../../../models';
 import {
   TableContainer,
@@ -8,6 +8,11 @@ import {
   TableCell,
   TableBody,
   Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
 } from '@material-ui/core';
 
 export interface StudentTableProps {
@@ -17,6 +22,26 @@ export interface StudentTableProps {
 }
 
 const StudentTable = ({ studentList, onEdit, onRemove }: StudentTableProps) => {
+  const [student, setStudent] = useState<Student>();
+
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleRemoveStudent = (student: Student) => {
+    setStudent(student);
+    setOpen(true);
+  };
+
+  const handleRemoveConfirm = (student: Student) => {
+    if (onRemove) {
+      onRemove(student);
+    }
+    setOpen(false);
+  };
+
   return (
     <Fragment>
       <TableContainer>
@@ -49,7 +74,12 @@ const StudentTable = ({ studentList, onEdit, onRemove }: StudentTableProps) => {
                   >
                     Edit
                   </Button>
-                  <Button variant="outlined" color="secondary" onClick={() => onRemove?.(student)}>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    // onClick={() => onRemove?.(student)}
+                    onClick={() => handleRemoveStudent(student)}
+                  >
                     Remove
                   </Button>
                 </TableCell>
@@ -58,6 +88,32 @@ const StudentTable = ({ studentList, onEdit, onRemove }: StudentTableProps) => {
           </TableBody>
         </Table>
       </TableContainer>
+      {/* Dialog */}
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{'Remove student?'}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure to remove student {student?.name} ?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Disagree
+          </Button>
+          <Button
+            color="primary"
+            autoFocus
+            onClick={() => handleRemoveConfirm?.(student as Student)}
+          >
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Fragment>
   );
 };

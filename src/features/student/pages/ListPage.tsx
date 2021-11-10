@@ -10,7 +10,8 @@ import {
 } from '../studentSlice';
 import Pagination from '@material-ui/lab/Pagination';
 import StudentSearch from '../components/StudentSearch';
-import { ListParams } from '../../../models';
+import { ListParams, Student } from '../../../models';
+import studentApi from '../../../api/studentApi';
 
 const ListPage = () => {
   const dispatch = useAppDispatch();
@@ -31,6 +32,17 @@ const ListPage = () => {
     dispatch(studentActions.searchDebounce(newFilter));
   };
 
+  const handleRemoveStudent = async (student: Student) => {
+    console.log('remove', student);
+    const studentId = student?.id;
+    try {
+      await studentApi.remove(studentId);
+      dispatch(studentActions.setFilter({ ...filter }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Box p={3}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -45,7 +57,7 @@ const ListPage = () => {
       </Box>
 
       {/* Student table */}
-      <StudentTable studentList={studentList} />
+      <StudentTable studentList={studentList} onRemove={handleRemoveStudent} />
       {/* Pagination */}
       <Box mt={2} display="flex" justifyContent="center">
         <Pagination
