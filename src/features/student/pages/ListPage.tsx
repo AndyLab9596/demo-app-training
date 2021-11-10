@@ -9,6 +9,7 @@ import {
   studentActions,
 } from '../studentSlice';
 import Pagination from '@material-ui/lab/Pagination';
+import StudentSearch from '../components/StudentSearch';
 
 const ListPage = () => {
   const dispatch = useAppDispatch();
@@ -34,7 +35,9 @@ const ListPage = () => {
         </Button>
       </Box>
 
-      <Box mb={3}>{/* Filter */}</Box>
+      <Box mb={3}>
+        <StudentSearch filter={filter} />
+      </Box>
 
       {/* Student table */}
       <StudentTable studentList={studentList} />
