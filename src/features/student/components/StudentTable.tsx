@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Student } from '../../../models';
 import {
   TableContainer,
@@ -18,45 +18,47 @@ export interface StudentTableProps {
 
 const StudentTable = ({ studentList, onEdit, onRemove }: StudentTableProps) => {
   return (
-    <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Gender</TableCell>
-            <TableCell>Mark</TableCell>
-            <TableCell>City</TableCell>
-            <TableCell align="center">Actions</TableCell>
-          </TableRow>
-        </TableHead>
-
-        <TableBody>
-          {studentList.map((student, idx) => (
-            <TableRow key={student.id}>
-              <TableCell>{student.id}</TableCell>
-              <TableCell>{student.name}</TableCell>
-              <TableCell>{student.gender}</TableCell>
-              <TableCell>{student.mark}</TableCell>
-              <TableCell>{student.city}</TableCell>
-              <TableCell align="center">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => onEdit?.(student)}
-                  style={{ marginRight: 8 }}
-                >
-                  Edit
-                </Button>
-                <Button variant="outlined" color="secondary" onClick={() => onRemove?.(student)}>
-                  Remove
-                </Button>
-              </TableCell>
+    <Fragment>
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Gender</TableCell>
+              <TableCell>Mark</TableCell>
+              <TableCell>City</TableCell>
+              <TableCell align="center">Actions</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+
+          <TableBody>
+            {studentList.map((student, idx) => (
+              <TableRow key={student.id}>
+                <TableCell>{student.id}</TableCell>
+                <TableCell>{student.name}</TableCell>
+                <TableCell>{student.gender}</TableCell>
+                <TableCell>{student.mark}</TableCell>
+                <TableCell>{student.city}</TableCell>
+                <TableCell align="center">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => onEdit?.(student)}
+                    style={{ marginRight: 8 }}
+                  >
+                    Edit
+                  </Button>
+                  <Button variant="outlined" color="secondary" onClick={() => onRemove?.(student)}>
+                    Remove
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Fragment>
   );
 };
 
