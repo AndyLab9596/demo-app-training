@@ -33,28 +33,28 @@ const Dashboard = () => {
         <Grid item xs={12} md={6} lg={3}>
           <StatisticItem
             icon={<PeopleAlt fontSize="large" color="primary" />}
-            label="male"
+            label="Male"
             value={statistics.maleCount}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={3}>
           <StatisticItem
             icon={<PeopleAlt fontSize="large" color="primary" />}
-            label="male"
+            label="Female"
             value={statistics.femaleCount}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={3}>
           <StatisticItem
             icon={<PeopleAlt fontSize="large" color="primary" />}
-            label="male"
+            label="High Mark Count"
             value={statistics.highMarkCount}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={3}>
           <StatisticItem
             icon={<PeopleAlt fontSize="large" color="primary" />}
-            label="male"
+            label="Low Mark Count"
             value={statistics.lowMarkCount}
           />
         </Grid>

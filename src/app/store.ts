@@ -7,6 +7,7 @@ import { combineReducers } from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { history } from '../utils';
 import dashboardReducer from '../features/dashboard/dashboardSlice';
+import studentReducer from '../features/student/studentSlice';
 
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     counter: counterReducer,
     auth: authReducer,
     dashboard: dashboardReducer,
+    student: studentReducer,
 })
 
 const sagaMiddleware = createSagaMiddleware();

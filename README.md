@@ -28,3 +28,23 @@ LOGOUT
 
 authSlice -> define reducers
 authSaga -> define effects
+
+/admin/students: listing
+/admin/students/add : add new student
+/admin/students/edit/:studentId update 
+
+Listings
+- Search by name
+- Filter by city
+- Sort by name, mark
+- Pagination
+
+Add/Edit
+- React hook form
+- yup
+
+Student Slice State
+- loading
+- list
+- filter {}
+- pagination
