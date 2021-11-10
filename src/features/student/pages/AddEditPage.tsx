@@ -2,12 +2,13 @@ import { Box, Typography } from '@material-ui/core';
 import { ChevronLeft } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { Student } from '../../../models';
 import studentApi from '../../../api/studentApi';
 import StudentForm from '../components/StudentForm';
 
 const AddEditPage = () => {
+  const history = useHistory();
   const { studentId } = useParams<{ studentId: string }>();
   const isEdit = !!studentId;
   const [student, setStudent] = useState<Student>();
@@ -25,7 +26,15 @@ const AddEditPage = () => {
   }, [isEdit, studentId]);
 
   // console.log('edit', student);
-  const handleFormSubmit = (formValues: Student) => {};
+  const handleFormSubmit = async (formValues: Student) => {
+    if (isEdit) {
+      await studentApi.update(formValues);
+    } else {
+      await studentApi.add(formValues);
+    }
+
+    history.push('/admin/student');
+  };
 
   const initialValues: Student = {
     name: '',

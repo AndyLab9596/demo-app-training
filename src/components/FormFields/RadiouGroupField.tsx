@@ -42,7 +42,6 @@ export function RadioGroupField({ name, control, label, disabled, options }: Rad
             label={option.label}
           />
         ))}
-        <FormControlLabel value="male" control={<Radio />} label="Male" />
       </RadioGroup>
       <FormHelperText>{error?.message}</FormHelperText>
     </FormControl>
