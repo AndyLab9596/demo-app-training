@@ -33,6 +33,9 @@ const ListPage = () => {
           Add Student
         </Button>
       </Box>
+
+      <Box mb={3}>{/* Filter */}</Box>
+
       {/* Student table */}
       <StudentTable studentList={studentList} />
       {/* Pagination */}
